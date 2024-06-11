@@ -1,0 +1,336 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="cs" />
+    <meta name="author" lang="cs" content="David Kohout; http://www.davidkohout.cz" />
+    <meta name="copyright" lang="cs" content="David Kohout; http://www.davidkohout.cz" />
+    <meta name="description" content="..." />
+    <meta name="keywords" content="..." />
+    <meta name="robots" content="all,follow" />
+    <link href="css/screen.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <title>Shankar Prasad Sastry</title>
+  </head>
+  <body>
+
+    <div id="layout">
+      
+      <div id="header">
+        
+        <h1 id="logo"><a href="#" title="#">Shankar P. Sastry</a></h1>
+        <hr class="noscreen" />   
+          
+              
+        <div id="navigation">
+        <ul>
+          <li><a href="index.html" title="#">HOME</a></li>
+          <li><a href="#" title="#">RESEARCH</a></li>
+	  <li><a href="pubs.html" title="#">PUBLICATIONS</a></li>
+	  <li><a href="about.html" title="#">ABOUT</a></li>
+          <li><a href="contact.html" title="#">CONTACT</a></li>
+        </ul>
+        </div>
+        <hr class="noscreen" />  
+    
+      </div>
+          
+        <div id="main">
+
+        <h1>Geometric Modeling</h1>
+	<h2>Geological Structures</h2>
+        <p>
+<img src="./img/simple_separated_surface.jpeg" alt="Geological structures with water-tight boundaries" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+The geometric modeling of geological structures finds applications in oil exploration.  
+These structures consist of "faults" and "horizons" with water-tight
+geometric partitioning (see the figure).  We are currently working towards geometric 
+modeling of the structures starting from input data with unorganized points obtained from images.  
+Representing geometric surfaces (called "tears") that are continuous 
+is some parts of the domain and discontinuous in the other parts is the main challenge
+in this work.  
+
+The visualization of the geological structures described above also poses significant challenges
+towards making the model interactive in real time.  This has also led us to carry out
+research in visualization, graphics, and numerical linear algebra.  Thus, we will
+be looking at various techniques including hierarchical representation, preconditioners
+for linear solvers, and bounding-box techniques to render implicit surfaces efficiently.      
+        </p>
+
+        <h3>Paper(s)</h3>
+        <p>Brigham Bagley, Shankar P. Sastry, and Ross T. Whitaker, "A Marching-tetrahedra Algorithm for Feature-preserving Meshing of Piecewise-smooth Implicit Surfaces,"
+in Proc. of the 25th <i>International Meshing Roundtable</i>, pp. 162-174, 2016 (<a href="http://www.sciencedirect.com/science/article/pii/S1877705816333471">link</a>).</p>
+</p>
+        
+<hr style="height:3px;border:none;color:#333;background-color:#333;" />
+
+
+        <h1>Mesh Generation</h1>
+	<h2>Volumetric Data</h2>
+<p>
+<img src="./img/output4.png" alt="Mesh generated for a synthetic example" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+Patient-specific treatment is possible through processing of magnetic resonance (MR) or
+computer tomography (CT) images (registration, segmentation, etc.) to obtain volumetric
+data containing the geometry of internal organs.  The challenges in this work included 
+working with multi-material data and achieving size adaptively.  Our research enabled generation 
+of provably high-quality meshes by construction of a nonconforming background mesh
+that is appropriately warped or "cleaved" to conform to the boundary.  
+Other main
+contribution of the work includes the development of a variational system to place 
+vertices in the regions of interest as seen in the figure here.  Vertex density requirement was met by assuming a
+background positive change density proportional to the input and running an 
+n-body particle simulation in which the vertices were assumed to possess negative charge.
+</p>
+<h3>Paper(s)</h3>
+        <p>Jonathan R. Bronson, Shankar P. Sastry, Joshua A. Levine, and Ross T. Whitaker, "Adaptive and unstructured mesh cleaving,"
+in Proc. of the 23rd <i>International Meshing Roundtable</i>, pp. 266-278, 2014 (<a href="http://www.sciencedirect.com/science/article/pii/S1877705814016683">link</a>).</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+
+<h2> Advancing-Front Delaunay Mesh Refinement</h2>
+<p>
+<img src="./img/delaunay_max_angle.png" alt="Mapping function" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+</p>
+Delaunay triangulation and refinement is a theoretically guaranteed technique of generating high-quality meshes. The technique produces meshes with triangular (or tetrahedral elements) with empty circumscribing circles (or spheres). The algorithm incrementally inserts vertices in a poor-quality triangle to recompute a new triangulation with better quality. I have developed a Delaunay refinement technique in which I place vertices on input segments first and then insert vertices in the domain in an advancing front manner. My algorithms work with input domains with small angles too. They produce graded meshes whose elements' areas vary over the domain. The algorithms are significantly better than current state-of-the-art algorithms in terms of theoretical guarantees.
+
+
+<h3>Paper(s)</h3>
+<p>
+Shankar P. Sastry. A 2D advancing-front delaunay mesh refinement algorithm. <i>Computational Geometry</i>, vol. 97, 2021 (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0925772121000286">link</a>, <a href="https://arxiv.org/abs/1808.01539">arxiv</a>).
+</p>
+<p>
+Shankar P. Sastry. A 3D advancing-front delaunay mesh refinement algorithm. <i>Computational Geometry</i>, submitted, 2021 (<a href="https://arxiv.org/abs/2105.00656">arxiv</a>).
+</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+
+<h2>Curvilinear Meshing</h2>
+<p>
+<img src="./img/foil.png" alt="Air foil curvilinear mesh" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+</p>
+Curvilinear meshes are obtained by first generating straight-sided meshes and mapping the 
+boundary vertices their respective locations on the curved boundaries. The interior vertices
+are subsequently interpolated to obtain a high-quality mesh. We use the RBF interpolation
+technique with the biharmonic kernel (thin plate splines) for this purpose. The main 
+contribution of this work is the Taylor series-based reasoning why the RBF-based techniques
+with the biharmonic kernel have always yielded better-quality meshes when used for mesh
+morphing/warping/deformation.  
+        <h3>Paper(s)</h3>
+
+<p>Shankar P. Sastry, Vidhi Zala, Robert M. Kirby, "Thin-Plate-Spline Curvilinear Meshing on a 
+Calculus-of-Variations Framework," in Proc. of the 24th <i>International Meshing Roundtable</i>, pp. 135-147, 
+2015 (<a href="http://www.sciencedirect.com/science/article/pii/S1877705815032294">link</a>).</p>
+<p>Vidhi Zala, Varun Shankar, Shankar P. Sastry and Robert M. Kirby, "Curvilinear Mesh Adaptation using Radial Basis Function 
+Interpolation and Smoothing," <i>Journal of Scientific Computing</i>, 77 (1), 397-418, 2018 (<a href="
+https://www.researchgate.net/publication/324435930_Curvilinear_Mesh_Adaptation_using_Radial_Basis_Function_Interpolation_and_Smoothing">link</a>).</p>
+<hr style="height:3px;border:none;color:#333;background-color:#333;" />
+
+        <h1>Mesh Adaptation</h1>
+	<h2>Numerical Analysis of Interpolation Error Bounds</h2>
+<p>
+<img src="./img/error.png" alt="Interpolation error over quadratic triangular element" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+The analysis of error in an FE simulation is an important step in validation and adaptation of our 
+numerical experiments.  Errors may arise due to several causes such as the discretization of 
+the domain and the equations and the interpolation of the solution within a mesh element.  
+Assessment of interpolation error bounds also provide insight into quality of a mesh element.  
+Prior work has mainly focused on analysis of interpolation error within a linear 
+mesh element.  We extended the work to include theoretical error bounds within
+high-order straight-sided elements (see the figure), and we are currently extended the work
+to curved high-order elements as well.  We were able to prove the results
+from the first principles using the Taylor series rather than the use of Bramble-Hilbert lemma.  
+Our results can applied in adaptive refinement and quality improvement of high-order meshes.  
+</p>
+	<h3>Paper(s)</h3> 
+
+<p>David Moxey, Shankar P. Sastry and Robert M. Kirby, "Interpolation error bounds for curved, high-order finite elements and their
+implications to adaptive mesh refinement," <i>Journal of Scientific Computing</i>, 78 (2), 1045-1062, 2019 (<a href="https://dl.acm.org/doi/abs/10.1007/s10915-018-0795-6">link</a>).
+</p>
+
+<p>S. P. Sastry and R. M. Kirby, "On interpolation errors over quadratic nodal triangular finite elements," in
+Proc. of the 22nd <i>International Meshing Roundtable</i>, pp. 349--366, 2013 (<a href="http://link.springer.com/chapter/10.1007%2F978-3-319-02335-9_20">link</a>).</p>
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+<h2>Parallel Log-barrier Mesh Untangling and Quality Improvement Algorithm</h2>
+<p>
+<img src="./img/untangling.png" alt="Mesh untangling dictated by numerical optimization algorithm" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+The presence of even a few poor-quality mesh elements can negatively affect the 
+stability, accuracy, and efficiency of an FE solver.  Mesh quality improvement 
+is carried out by vertex movement dictated by a numerical optimization 
+algorithm (see the figure).  
+We developed an interior point method-based worst element 
+mesh untangling and quality improvement 
+algorithm.  We improved the 
+quality of the worst element in the mesh (which may be inverted) 
+by reformulating a nonsmooth unconstrained optimization problem into a smooth 
+constrained optimization problem and solving the resulting problem 
+using a log-barrier method.  We show that 
+the algorithm satisfies the Karush-Kuhn-Tucker (KKT) conditions, a set of 
+first-order necessary conditions, at the point of convergence.    
+We also developed a parallel implementation 
+of the algorithm for distributed-memory machines that uses a greedy 
+edge-coloring scheme to enable parallel data transfer.  
+</p>
+	<h3>Paper(s)</h3>
+
+<p>Shankar P. Sastry, Suzanne M. Shontz, Stephen A. Vavasis,  "A log-barrier method for mesh quality improvement," 
+Proc. of the 20th <i>International Meshing Roundtable</i>, pp. 329-346, 2011 (<a href="http://link.springer.com/chapter/10.1007%2F978-3-642-24734-7_18">link</a>).</p>
+<p>Shankar P. Sastry, Suzanne M. Shontz, and Stephen A. Vavasis, "A log-barrier method for mesh quality improvement and
+untangling," invited submission to <i>Engineering with Computers</i>, vol. 30(3), pp. 315--329, 2014 (<a href="http://link.springer.com/article/10.1007%2Fs00366-012-0294-6#page-1">link</a>).</p>
+<p>Shankar P. Sastry and Suzanne M. Shontz, "A parallel log-barrier method for mesh quality improvement and untangling,"
+invited submission to <i>Engineering with Computers</i>, vol. 30(4), pp. 503--515, 2014 (<a href="http://link.springer.com/article/10.1007/s00366-014-0362-1">link</a>).</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+
+<h2> Local Mesh Quality Improvement</h2>
+<p>
+<img src="./img/twoangles.png" alt="Three equal angles" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+</p>
+In order to improve the quality of mesh elements, we move vertices in the mesh one by one such that the quality of the elements improves in the local vicinity. We answer the question of how to move vertices and which vertices to move first. We move vertices such that a vertex maximizes the minimum angle in the local star-shaped polygon. We choose vertices based on the inequality in the quality of the elements in the polygon and the direction of their gradients. 
+
+<h3>Paper(s)</h3>
+<p>Shankar P. Sastry, "Maximizing the Minimum Angle with the Insertion of Steiner Vertices,"
+in Proc. of the 27th <i>Canadian Conference on Computational Geometry</i>, 2015 (<a href="http://cccg.ca/proceedings/2015/11.pdf">link</a>).</p>
+<p>
+J Choi, H Kim, Shankar P Sastry, and Jibum Kim, 
+"A deviation-based dynamic vertex reordering technique for 2D mesh quality improvement", <i>Symmetry</i>, 11 (7), 2019 (<a href="https://www.mdpi.com/2073-8994/11/7/895">link</a>).
+</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+
+
+<h2>Characterization of Mesh Quality Improvement Algorithms</h2>
+We characterized some optimization techniques
+by analyzing their performance in several contexts such as inaccurate and accurate 
+smoothing requirements and smoothing of graded, randomly-perturbed, and 
+vertex-translated meshes.  
+We also characterized the performance of linear solvers and preconditioners 
+when the meshes were used to numerically solve isotropic, elliptic PDEs 
+after the meshes were smoothed using various geometric quality 
+metrics.  The study resulted in context-specific 
+assessment of performance of the mesh quality improvement techniques.
+	<h3>Paper(s)</h3>
+
+
+<p>Jibum Kim, Shankar P. Sastry, and Suzanne M. Shontz, "A numerical investigation on the interplay among geometry, meshes, 
+and linear algebra in the finite element solution of elliptic PDEs," invited submission to <i>Engineering with Computers</i>, 
+vol. 28, pp. 431--450, 2012 (<a href="http://link.springer.com/article/10.1007%2Fs00366-011-0231-0">link</a>).</p> 
+
+<p>Shankar P. Sastry and Suzanne M. Shontz, "Performance characterization of nonlinear optimization methods 
+for mesh quality improvement," invited submission to <i>Engineering with Computers</i>,
+vol. 28(3), pp. 269--286, 2012 (<a href="http://link.springer.com/article/10.1007%2Fs00366-011-0227-9">link</a>).</p>  
+
+<p>Jibum Kim, Shankar P. Sastry, and Suzanne M. Shontz,  "Efficient solution of elliptic partial differential equations 
+via effective combination of mesh quality metrics, preconditioners, and sparse linear solvers," 
+in Proc. of the 19th <i>International Meshing Roundtable</i>, pp. 103-120, 2010 (<a href="http://link.springer.com/chapter/10.1007%2F978-3-642-15414-0_7">link</a>).</p> 
+
+<p>Shankar P. Sastry and Suzanne M. Shontz, "A Comparison of Gradient- and Hessian-Based Optimization Methods 
+for Tetrahedral Mesh Quality Improvement," Proc. of the 18th <i>International Meshing Roundtable</i>, 
+pp. 631-648, 2009 (<a href="http://link.springer.com/chapter/10.1007%2F978-3-642-04319-2_36">link</a>).</p>
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;" />
+<h1>High Performance Computing</h1>
+<h2>Cache Utilization</h2>
+<p>
+<img src="./img/sfc.png" alt="Mesh generated for a synthetic example" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+We worked on mesh element and vertex reordering techniques to improve 
+the spatial locality for memory access pattern to improve cache utility 
+in an implementation of a parallel algorithm
+that solves Laplace's equations in order to warp a mesh.  
+We used graph theoretic (reverse Cuthill-McKee) and geometric 
+(Hilbert space-filling curves as shown in the figure) techniques to reorder 
+mesh elements and vertices in single- and multi-core environments.  
+The reordering of vertices and elements to enable efficient 
+partitioning of a mesh in a shared-memory processor for parallel 
+processing in a multi-core environment.  As a result of the data 
+reordering, an improvement in cache utilization due to temporal 
+locality was also observed.  The improvement was observed for
+both stiffness matrix construction and the linear solver.  
+Besides cache utilization, the performance
+of block Jacobi preconditioner also improved, i.e., fewer iterations
+were needed to converge to a solution, as a result of the reordering.
+</p>
+	<h3>Paper(s)</h3>
+<p>Shankar P. Sastry, Emre U. Kultursay, Suzanne M. Shontz, and Mahmut T. Kandemir, "Mesh vertex- and element-reordering
+techniques for improved cache utilization in parallel mesh warping algorithms," invited submission to 
+ <i>Engineering with Computers</i>, vol. 30(4), pp. 535--547, 2014 (<a href="
+http://link.springer.com/article/10.1007/s00366-014-0363-0">link</a>).</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+<h2>Aggregation for AMG Preconditioners</h2>
+<p>
+<img src="./img/aggregation.png" alt="Aggregates from a bottom-up technique" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+Algebraic multigrid (AMG) preconditioners are used in solving sparse linear system
+arising from finite element meshes.  The aggregation of degrees of freedom (nodes)
+in an AMG preconditioner can be carried out in a "top-down" or a "bottom-up"
+fashion.  In a "top-down" technique, the nodes are recursively
+partitioned until the desired number of aggregates are obtained.  
+In a "bottom-up" 
+technique, the desired number of partitions are first formed using a set
+of nodes acting as seeds, and all other nodes associate themselves
+with one of the seed nodes based on their geometric or topological
+proximity.  The aggregates then iteratively reorganize themselves
+by moving the seeds to the "center" of their respective aggregates,
+and other nodes reassociate themselves to the nearest seed.  In this 
+study, we found that our GPU-based "bottom-up" technique yields
+aggregates that are topologically convex, which results in faster
+solution time over "top-down" techniques.  
+</p>
+
+<h3>Paper(s)</h3>
+<p>T. James Lewis, Shankar P. Sastry, Robert M. Kirby, Ross T. Whitaker, 
+"A GPU-based MIS Aggregation Strategy", 
+in Proc. of the 21st <i> IEEE International Conference on High Performance Computing </i>, 
+pp 214-223, 2015 (<a href="http://ieeexplore.ieee.org/document/7397636/">link</a>).</p>
+
+<hr style="height:3px;border:none;color:#333;background-color:#333;" />
+
+<h1>Application in Medicine</h1>
+<h2>Patient-Specific Mesh Generation</h2>
+<p>
+<img src="./img/ivc.png" alt="Mesh generated for a synthetic example" height="30%" width="30%" style="float:left;margin:0 5px 0 0; clear: left;"/>
+We developed a patient-specific mesh generation technique with application 
+to inferior vena cava (IVC) computational fluid dynamics (CFD) blood flow simulations.  
+Pulmonary embolism (PE) is a potentially fatal disease in which blood clots travel 
+from deep veins within the body and migrate to the lungs.  When anti-coagulation 
+therapy fails (or is infeasible), a mechanical filter is surgically implanted in 
+the IVC in order to capture blood clots.  Our technique generates patient-specific 
+meshes of the IVC and the IVC filter to facilitate blood flow simulations, which 
+provides surgical guidance to place the filter at a desirable 
+location.  
+This technique can also be used to model blood flow when stents are used to dilate 
+blood vessels.  Our technique involves segmentation of patient computer 
+tomography (CT) images and virtual placement of a geometric model of an 
+IVC filter mesh created by a computer-aided design (CAD) software package.  
+The image segmentation extracts a model of the IVC and its adjacent veins, 
+and a surface mesh of the IVC is generated using the marching cubes algorithm.  
+The IVC filter mesh is virtually placed in the IVC surface mesh by modeling the 
+superelastic properties of IVC filter and the approximated linear elastic properties 
+of the IVC. A volume mesh is generated using the advancing front technique
+as shown in the figure.  
+</p>
+	<h3>Paper(s)</h3>
+<p>Kenneth I. Aycock, Robert L. Campbell, Keefe B. Manning, Shankar P. Sastry, Suzanne M. Shontz, Frank C. Lynch, and Brett A. Craven, "A computational method for predicting inferior vena cava filter performance on a patient-specific basis,"
+<i>Journal of Biomechanical Engineering</i>, vol. 136(8), 2014 (<a href="http://biomechanical.asmedigitalcollection.asme.org/article.aspx?articleid=1870705">link</a>).</p>
+
+<p>Shankar P. Sastry, Jibum Kim, Suzanne M. Shontz, Brent A. Craven, Frank C. Lynch, Keefe B. Manning, and Thap Panitanarak, 
+"Patient-specific model generation and simulation for pre-operative surgical guidance for pulmonary embolism treatment," 
+Invited submission to <i>Image-Based Modeling and Mesh Generation</i>, vol. 3, pp. 223--249, 2013 (<a href="http://link.springer.com/chapter/10.1007%2F978-94-007-4255-0_12">link</a>).</p>
+
+</div>
+  </div>
+        <div id="footer">
+        <div id="footer-inside">
+        <p id="copyright">&copy; 2014 - <a href="http://shankar.sastry.name">Shankar Prasad Sastry</a></p>
+        
+        <!-- Please don't delete this. You can use this template for free and this is the only way that you can say thanks to me -->
+          <p id="dont-delete-this">Design by <a href="http://www.davidkohout.cz">David Kohout</a> | Our tip: <a href="http://www.goodmood.cz" title="Absinthe, Becherovka, Slivovitz store">Absinthe Store</a></p>
+        <!-- Thank you :) -->
+<a title="web statistics" href="http://statcounter.com/"
+target="_blank"><img
+src="http://c.statcounter.com/10146207/0/8539cc9e/1/"
+alt="web statistics" style="border:none;"></a>
+        </div><div style="clear: both;"></div></div>
+  </body>
+</html>

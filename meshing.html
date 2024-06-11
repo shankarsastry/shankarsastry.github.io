@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="cs" />
+    <meta name="author" lang="cs" content="David Kohout; http://www.davidkohout.cz" />
+    <meta name="copyright" lang="cs" content="David Kohout; http://www.davidkohout.cz" />
+    <meta name="description" content="..." />
+    <meta name="keywords" content="..." />
+    <meta name="robots" content="all,follow" />
+    <link href="css/screen.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <title>Shankar Prasad Sastry</title>
+  </head>
+  <body>
+
+    <div id="layout">
+      
+      <div id="header">
+        
+        <h1 id="logo"><a href="#" title="#">Shankar P. Sastry</a></h1>
+        <hr class="noscreen" />   
+          
+              
+        <div id="navigation">
+        <ul>
+          <li><a href="index.html" title="#">HOME</a></li>
+          <li><a href="research.html" title="#">RESEARCH</a></li>
+	  <li><a href="pubs.html" title="#">PUBLICATIONS</a></li>
+	  <li><a href="about.html" title="#">ABOUT</a></li>
+          <li><a href="contact.html" title="#">CONTACT</a></li>
+        </ul>
+        </div>
+        <hr class="noscreen" />  
+    
+      </div>
+          
+        <div id="main">
+
+        <h1>Vertex Placement Techniques for Linear and Curvilinear, Simplicial, Isotropic Mesh Generation</h1>
+<p>
+In this page, I briefly highlight my contribution to the field of mesh generation. The work may be considered a part of a long thesis that spans my doctoral and postdoctoral research. My research publications appropriately fit the framework described below. 
+</p>
+
+<p>
+Mesh generation may be reduced to resolving two issues: (a) how the vertices are placed, and (b) how they are connected. For simplicial, isotropic, linear meshes, the latter issue is answered with Delaunay triangulation algorithms because they maximize the minimum angle among all possible triangulations. The former issue about the placement of vertices has been the focus of research in the last few decades for both linear and curvilinear meshes. My research has tackled the same question in several contexts, which may be considered to constitute a pipeline described below. 
+</p>
+	<h2>The pipeline</h2>
+        <p>
+An input to some mesh generation algorithms is a planar straight line graph (PSLG) in 2D or a piecewise linear complex (PLC) in 3D. The placement of vertices to obtain a high-quality, simplicial, isotropic (linear or curvilinear) mesh can be considered in the following stages: (a) pre-triangulaation, (b) in-triangulation, (c) post-triangulation, (d) linear/curvilinear deformation, and (e) vertex relocation (for high-order elements). My research spans all the stages of the pipeline. 
+        </p> 
+<hr style="height:3px;border:none;color:#333;background-color:#333;" />
+
+
+	<h2>Pre-tetrahedralization</h2>
+<p>
+In some applications, vertices are first distributed over the whole domain before they are triangulated. Some notable examples include centroidal Voronoi tessellation (link) and bubble packing (link) algorithms. I worked on an electrostatics-based method to distribute vertices to respected the local element size requirements. In our algorithm, we treat the vertices as particles with negative charge and impose a positive charge density over the domain. Where greater vertices are needed, the change density is greater as more vertices get "attracted" to the region. Since negative charges repel, no two particle come too close to each other. Thus, we achieve a good distribution of vertices for subsequent meshing. 
+</p>
+<h3>Paper(s)</h3>
+        <p>Jonathan R. Bronson, Shankar P. Sastry, Joshua A. Levine, and Ross T. Whitaker, "Adaptive and unstructured mesh cleaving,"
+in Proc. of the 23rd <i>International Meshing Roundtable</i>, pp. 266-278, 2014 (<a href="http://www.sciencedirect.com/science/article/pii/S1877705814016683">link</a>).</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+	<h2>In-tetrahedralization</h2>
+<p>
+In Delaunay refinement algorithms, new vertices are incrementally added at the center of the circumscribing circle (or sphere) of a poor-quality triangle to improve the quality of the triangulation (see Shewchuk's dissertation for an analysis and development of such algorithms). There have been off-center vertex insertion algorithms (link, link, link, link) that have the same theoretical guarantee, but insert fewer vertices in practice.  I developed an algorithm to insert vertices such that the minimum angle in the resulting triangulation is maximized.  I am currently working algorithm to place multiple vertices simultaneously by maximizing the minimum distance based on Ertan and Urgur's work (link).
+</p>
+
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+	<h2>Post-tetrahedralization</h2>
+After the generation and refinement of meshes. mesh vertices may be moved or their edges may be flipped to improve their quality. I have worked on the log-barrier mesh untangling and quality improvement algorithm (link, link) that moves vertices to optimize a logarithm objective function to improve the quality of the worst elements. I also implemented the algorithm in parallel. 
+<p>
+</p>
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+	<h2>Mesh Deformation and Curvilinear Mesh Generation</h2>
+<p>
+After the mesh is generated, it may have to be deformed due to changing shape of the domain or introduce curvature into the boundary elements if a shape-conforming high-order mesh is needed. First, the boundary vertices are moved to the desired locations. Then, the locations of the interior vertices can be viewed as an interpolation of a mapping function whose values at the boundary vertices (of the straight-sided mesh) are equal to the vertex locations on the curved domain. This mapping function may be obtained from the solution of an elliptic PDE, whose Dirichlet boundary conditions are equivalent to the new locations of the boundary vertices. We used equations modeling superelastic materials to carry out such a deformation. We are also currently working on an RBF-based interpolation technique to compute the mapping function. We used calculus of variations-based analysis to explain why RBF-based methods perform much better than other techniques in providing a high-quality mesh.
+</p>
+<hr style="height:2px;border:none;color:#333;background-color:#333;" />
+
+	<h2>Vertex Relocation Within High-Order Elements</h2>
+<p>
+After a curved mesh is generated, the vertices within their high-order finite elements may be moved to reduce the bounds on the interpolation error. Earlier papers used electrostatics (link) or maximization of the determinant of the Vandermonde matrix (link) or minimization of the Lebesgue constant (link) to determine the locations of the vertices. These papers do not account for minimization of the error in a curved element or for the error bounds in the interpolated gradient. To overcome these limitations, we carried out a Taylor series-based analysis to reduce the interpolation error bounds for high-order, curved elements. 
+</p>
+</div>
+  </div>
+        <div id="footer">
+        <div id="footer-inside">
+        <p id="copyright">&copy; 2014 - <a href="http://shankar.sastry.name">Shankar Prasad Sastry</a></p>
+        
+        <!-- Please don't delete this. You can use this template for free and this is the only way that you can say thanks to me -->
+          <p id="dont-delete-this">Design by <a href="http://www.davidkohout.cz">David Kohout</a> | Our tip: <a href="http://www.goodmood.cz" title="Absinthe, Becherovka, Slivovitz store">Absinthe Store</a></p>
+        <!-- Thank you :) -->
+<a title="web statistics" href="http://statcounter.com/"
+target="_blank"><img
+src="http://c.statcounter.com/10146207/0/8539cc9e/1/"
+alt="web statistics" style="border:none;"></a>
+        </div><div style="clear: both;"></div></div>
+  </body>
+</html>
