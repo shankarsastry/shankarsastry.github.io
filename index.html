@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shankar Prasad Sastry — Software Engineer &amp; Researcher</title>
+  <meta name="description" content="Personal website of Shankar Prasad Sastry — Software Engineer at Meta, PhD in Computer Science and Engineering from Penn State. Research in computational geometry, meshing, and high-performance scientific computing." />
+  <meta name="keywords" content="Shankar Sastry, computational geometry, mesh generation, finite element, scientific computing, high performance computing, software engineer, Meta" />
+  <meta property="og:title" content="Shankar Prasad Sastry — Software Engineer & Researcher" />
+  <meta property="og:description" content="Software Engineer at Meta. PhD in Computer Science and Engineering. Research in computational geometry, meshing, and HPC." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23dc2626'/><text x='16' y='22' text-anchor='middle' font-size='16' font-weight='bold' fill='white' font-family='Arial'>Sastry</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #303030;
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* ==================== NAVIGATION ==================== */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .nav-inner {
+      max-width: 1024px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; padding: 0 24px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+      color: #111; text-decoration: none;
+    }
+    .nav-logo-bar { display: inline-block; width: 6px; height: 24px; border-radius: 9999px; background: #dc2626; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 12px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; color: #525252;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .nav-links a:hover { background: #f5f5f5; color: #111; }
+
+    /* Mobile menu */
+    .nav-toggle {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 40px; height: 40px; border-radius: 8px;
+      color: #525252; align-items: center; justify-content: center;
+    }
+    .nav-toggle:hover { background: #f5f5f5; }
+    .nav-mobile { display: none; padding: 16px 24px; border-top: 1px solid #e5e7eb; }
+    .nav-mobile a {
+      display: block; padding: 10px 12px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; color: #525252;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .nav-mobile a:hover { background: #f5f5f5; color: #111; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-mobile.open { display: block; }
+    }
+
+    /* ==================== HERO ==================== */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #171717, #262626, #171717);
+      padding: 80px 0; color: #fff;
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='white' stroke-width='1'/%3E%3Cpath d='M0 0L60 0L60 60L0 60Z' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E");
+    }
+    .hero-glow-1 {
+      position: absolute; top: -160px; right: 0;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: rgba(220,38,38,0.1); filter: blur(48px);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute; bottom: -160px; left: 0;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: rgba(220,38,38,0.05); filter: blur(48px);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; max-width: 1024px; margin: 0 auto;
+      display: flex; align-items: center; gap: 64px;
+      padding: 0 24px; flex-direction: row;
+    }
+    .hero-text { flex: 1; }
+    .hero-label {
+      margin-bottom: 12px; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #f87171;
+    }
+    .hero h1 {
+      margin-bottom: 16px; font-size: 48px; font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .hero-desc {
+      margin-bottom: 32px; max-width: 560px;
+      font-size: 18px; line-height: 1.7; color: #d4d4d4;
+    }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 9999px;
+      border: 1px solid #525252; background: rgba(38,38,38,0.5);
+      font-size: 14px; font-weight: 500; color: #d4d4d4;
+      text-decoration: none; transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .hero-link:hover {
+      border-color: rgba(220,38,38,0.5); background: rgba(64,64,64,0.5);
+      color: #fff; transform: translateY(-2px);
+    }
+    .hero-link svg { width: 16px; height: 16px; fill: currentColor; }
+    .hero-photo-wrap { position: relative; flex-shrink: 0; }
+    .hero-photo-glow {
+      position: absolute; inset: 0; border-radius: 16px;
+      background: rgba(220,38,38,0.2); filter: blur(24px);
+    }
+    .hero-photo {
+      position: relative; width: 224px; height: 224px; overflow: hidden;
+      border-radius: 16px; border: 2px solid #404040;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 48px 0; }
+      .hero-inner { flex-direction: column-reverse; gap: 40px; text-align: center; }
+      .hero h1 { font-size: 36px; }
+      .hero-links { justify-content: center; }
+      .hero-photo { width: 192px; height: 192px; }
+    }
+
+    /* ==================== RESEARCH SECTION ==================== */
+    .research { padding: 80px 0; background: #fafafa; }
+    .research-inner { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      text-align: center; margin-bottom: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #dc2626;
+    }
+    .section-title {
+      text-align: center; margin-bottom: 16px;
+      font-size: 32px; font-weight: 700; letter-spacing: -0.02em; color: #111;
+    }
+
+    /* Overview box */
+    .overview-box {
+      margin: 48px 0; padding: 24px 32px;
+      border: 1px solid #e5e7eb; border-radius: 12px;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .overview-box h3 { margin-bottom: 16px; font-size: 20px; font-weight: 700; color: #111; }
+    .overview-box p { margin-bottom: 16px; line-height: 1.7; color: #525252; }
+    .overview-box strong { color: #111; }
+
+    /* Pipeline SVG */
+    .pipeline { margin-bottom: 64px; text-align: center; }
+    .pipeline h3 { margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #404040; }
+    .pipeline svg { max-width: 740px; width: 100%; margin: 0 auto; }
+    .pipeline-box { fill: #fff; stroke: #262626; stroke-width: 1.5; }
+    .pipeline-text { fill: #262626; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; }
+    .pipeline-arrow { stroke: #737373; stroke-width: 1.5; }
+    .pipeline-group { stroke: #a855f7; stroke-width: 2; stroke-dasharray: 6 4; fill: none; }
+    .pipeline-group-text { fill: #a855f7; font-size: 16px; font-weight: 700; font-style: italic; font-family: 'Inter', sans-serif; }
+
+    /* Project cards */
+    .projects { display: flex; flex-direction: column; gap: 24px; }
+    .project-card {
+      border-radius: 12px; padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-left: 4px solid;
+    }
+    .project-card.bg-white { background: #fff; }
+    .project-card.bg-gray { background: #fafafa; }
+    .project-category {
+      display: block; margin-bottom: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #a3a3a3;
+    }
+    .project-title { margin-bottom: 12px; font-size: 20px; font-weight: 700; color: #111; }
+    .project-content { }
+    .project-content.has-image { display: flex; gap: 20px; }
+    .project-image {
+      flex-shrink: 0; width: 192px;
+      border-radius: 8px; border: 1px solid #e5e7eb; overflow: hidden;
+    }
+    .project-image img { width: 100%; object-fit: cover; }
+    .project-desc {
+      margin-bottom: 12px; font-size: 14px; line-height: 1.7; color: #525252;
+    }
+    .read-more-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-bottom: 12px; background: none; border: none; cursor: pointer;
+      font-size: 12px; font-weight: 600; color: #dc2626;
+      font-family: inherit; padding: 0;
+    }
+    .read-more-btn:hover { color: #b91c1c; }
+    .read-more-btn svg { width: 12px; height: 12px; transition: transform 0.2s; }
+    .read-more-btn.expanded svg { transform: rotate(180deg); }
+
+    /* Papers within cards */
+    .papers-section { border-top: 1px solid #f0f0f0; padding-top: 16px; margin-top: 4px; }
+    .papers-label {
+      margin-bottom: 12px; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #a3a3a3;
+    }
+    .papers-list { display: flex; flex-direction: column; gap: 12px; }
+    .paper-item { padding: 12px; border-radius: 8px; background: #fafafa; }
+    .paper-title { font-size: 14px; font-weight: 500; line-height: 1.4; color: #111; }
+    .paper-authors { margin-top: 2px; font-size: 12px; color: #737373; }
+    .paper-venue { margin-top: 2px; font-size: 12px; color: #a3a3a3; font-style: italic; }
+    .paper-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .paper-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 6px;
+      border: 1px solid #e5e7eb; background: #fff;
+      font-size: 12px; font-weight: 500; color: #dc2626;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .paper-link:hover { border-color: #fca5a5; background: #fef2f2; }
+    .paper-link svg { width: 12px; height: 12px; }
+
+    /* Border colors for project cards */
+    .border-cyan { border-left-color: #06b6d4; }
+    .border-emerald { border-left-color: #10b981; }
+    .border-blue { border-left-color: #3b82f6; }
+    .border-purple { border-left-color: #a855f7; }
+    .border-amber { border-left-color: #f59e0b; }
+    .border-rose { border-left-color: #f43f5e; }
+
+    /* Scholar links */
+    .scholar-links { margin-top: 48px; text-align: center; }
+    .scholar-links p { margin-bottom: 16px; color: #737373; }
+    .scholar-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .scholar-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 9999px;
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .scholar-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .scholar-btn.primary { background: #dc2626; color: #fff; }
+    .scholar-btn.primary:hover { background: #b91c1c; }
+    .scholar-btn.secondary { background: #fff; color: #404040; border: 1px solid #d4d4d4; }
+
+    .scholar-btn svg { width: 16px; height: 16px; }
+
+    @media (max-width: 768px) {
+      .project-content.has-image { flex-direction: column; }
+      .project-image { width: 100%; }
+      .section-title { font-size: 28px; }
+    }
+
+    /* ==================== ABOUT / TIMELINE ==================== */
+    .about { padding: 64px 0; background: #fff; }
+    .about-inner { max-width: 768px; margin: 0 auto; padding: 0 24px; }
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline-line {
+      position: absolute; top: 0; left: 7px;
+      width: 1px; height: 100%; background: #e5e7eb;
+    }
+    .timeline-items { display: flex; flex-direction: column; gap: 16px; }
+    .timeline-item { position: relative; }
+    .timeline-dot {
+      position: absolute; left: -24px; top: 12px;
+      width: 10px; height: 10px; border-radius: 50%;
+      outline: 3px solid #fff;
+    }
+    .timeline-card {
+      padding: 12px 16px; border-radius: 8px;
+      border: 1px solid #e5e7eb; background: #fff;
+      transition: background 0.15s;
+    }
+    .timeline-card:hover { background: #fafafa; }
+    .timeline-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; }
+    .timeline-role { font-size: 14px; font-weight: 700; color: #111; }
+    .timeline-company { font-size: 14px; font-weight: 500; color: #dc2626; }
+    .timeline-period { font-size: 12px; color: #a3a3a3; }
+    .timeline-current {
+      display: inline-block; padding: 2px 6px; border-radius: 9999px;
+      font-size: 10px; font-weight: 500; line-height: 1;
+      background: #dcfce7; color: #15803d;
+    }
+    .timeline-desc { margin-top: 4px; font-size: 12px; color: #737373; }
+    .timeline-details { margin-top: 4px; font-size: 12px; line-height: 1.6; color: #737373; }
+
+    /* Dot colors */
+    .dot-blue { background: #2563eb; }
+    .dot-red { background: #ef4444; }
+    .dot-blue2 { background: #3b82f6; }
+    .dot-sky { background: #0ea5e9; }
+    .dot-amber { background: #f59e0b; }
+    .dot-indigo { background: #6366f1; }
+    .dot-emerald { background: #10b981; }
+
+    /* ==================== FOOTER ==================== */
+    .footer { background: #171717; padding: 64px 0; color: #a3a3a3; }
+    .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 48px; }
+    .footer-brand-name { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .footer-brand-name span.bar { display: inline-block; width: 6px; height: 24px; border-radius: 9999px; background: #dc2626; }
+    .footer-brand-name span.name { font-size: 18px; font-weight: 700; color: #fff; }
+    .footer-brand-desc { font-size: 14px; line-height: 1.7; }
+    .footer h3 {
+      margin-bottom: 16px; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #fff;
+    }
+    .footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer a { font-size: 14px; color: #a3a3a3; text-decoration: none; transition: color 0.15s; }
+    .footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #262626; padding-top: 32px; text-align: center; }
+    .footer-bottom p { font-size: 14px; color: #737373; }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ==================== BACK TO TOP ==================== */
+    .back-to-top {
+      position: fixed; right: 24px; bottom: 24px; z-index: 50;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #dc2626; color: #fff; border: none; cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+      opacity: 0; transform: translateY(16px); pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .back-to-top:hover { background: #b91c1c; transform: translateY(-2px); }
+    .back-to-top svg { width: 20px; height: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <span class="nav-logo-bar"></span>
+      Shankar P. Sastry
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-mobile').classList.toggle('open')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h14M3 10h14M3 14h14" />
+      </svg>
+    </button>
+  </div>
+  <div class="nav-mobile">
+    <a href="#home" onclick="document.querySelector('.nav-mobile').classList.remove('open')">Home</a>
+    <a href="#research" onclick="document.querySelector('.nav-mobile').classList.remove('open')">Research</a>
+    <a href="#about" onclick="document.querySelector('.nav-mobile').classList.remove('open')">About</a>
+    <a href="#contact" onclick="document.querySelector('.nav-mobile').classList.remove('open')">Contact</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="home" class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-label">Software Engineer</p>
+      <h1>Shankar P. Sastry</h1>
+      <p class="hero-desc">
+        Software Engineer at Meta. PhD in Computer Science and Engineering from Penn State.
+        Research in computational geometry, meshing, and high-performance scientific computing.
+      </p>
+      <div class="hero-links">
+        <a href="http://scholar.google.com/citations?user=Ug8mveQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+          Google Scholar
+        </a>
+        <a href="http://www.linkedin.com/in/shankarsastry" target="_blank" rel="noopener noreferrer" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.researchgate.net/profile/Shankar_Sastry3" target="_blank" rel="noopener noreferrer" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M19.586 0c-2.123 0-3.6 1.482-3.6 3.58 0 2.098 1.477 3.58 3.6 3.58S23.186 5.678 23.186 3.58C23.186 1.482 21.709 0 19.586 0zM4.23 7.16c-2.336 0-4.23 1.91-4.23 4.267 0 2.357 1.894 4.267 4.23 4.267s4.23-1.91 4.23-4.267c0-2.357-1.894-4.267-4.23-4.267zm15.356 2.978c-2.336 0-4.23 1.91-4.23 4.267 0 2.357 1.894 4.267 4.23 4.267s4.23-1.91 4.23-4.267c0-2.357-1.894-4.267-4.23-4.267zM4.23 18.672c-2.336 0-4.23 1.91-4.23 4.267S1.894 24 4.23 24s4.23-1.91 4.23-4.267-1.894-4.267-4.23-4.267z"/></svg>
+          ResearchGate
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo">
+        <img src="img/sastry.png" alt="Shankar Prasad Sastry" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RESEARCH ==================== -->
+<section id="research" class="research">
+  <div class="research-inner">
+    <p class="section-label">Research</p>
+    <h2 class="section-title">Research &amp; Publications</h2>
+
+    <!-- Overview -->
+    <div class="overview-box">
+      <h3>Overview</h3>
+      <p>
+        Simulation science is usually driven by the solution to partial differential equations (PDEs) using the finite element (FE) method. A computational pipeline that facilitates computer-aided engineering (CAE) typically involves the following stages: geometric modeling, mesh generation, numerical simulation, error analysis, mesh adaptation, and visualization. My research has focused on <strong>numeric</strong> and <strong>geometric</strong> aspects of <strong>scientific</strong> and <strong>high performance computing</strong> in most of the stages of the pipeline. I have also used my knowledge in these areas to develop a machine learning algorithm for regression and classification.
+      </p>
+      <div id="overview-extra" style="display: none;">
+        <p>
+          As the first step in CAE, geometric models are obtained from specialized software, image data, or other sources. These models are discretized to construct surface and volume meshes to solve discretized forms of PDEs. High-quality meshes are necessary for the stability and efficiency of an FE solver and the accuracy of the associated PDE solution. In order to obtain high-quality meshes, the quality of its elements is optimized using numerical techniques. Analysis of error in numerical simulations and the subsequent adaptation of meshes (refinement, warping, optimization, etc.) yield accurate solutions that may be visualized to aid engineering design.
+        </p>
+        <p>
+          Specifically, I have worked on geometric modeling and visualization of geological structures with applications to oil exploration, meshing techniques (generation, optimization, and adaptation) with applications to patient-specific treatment, numerical analysis to determine error bounds in the FE method, and data reordering techniques to improve cache utilization. I have also worked on numerical optimization and graph theoretic approaches to improve the performance of preconditioned linear solvers.
+        </p>
+        <p>
+          Additionally, I have recently worked on using the knowledge from numeric and geometric aspects of scientific and high performance computing in developing a machine learning algorithm that can be used for regression and classification.
+        </p>
+      </div>
+      <button class="read-more-btn" onclick="var el=document.getElementById('overview-extra');var shown=el.style.display!=='none';el.style.display=shown?'none':'block';this.classList.toggle('expanded');this.firstChild.textContent=shown?'Read more':'Show less'"><span>Read more</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"></path></svg></button>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="pipeline">
+      <h3>The CAE Pipeline</h3>
+      <svg viewBox="0 0 740 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#737373" />
+          </marker>
+        </defs>
+        <!-- Grouping boxes -->
+        <rect x="8" y="8" width="430" height="230" rx="8" class="pipeline-group" />
+        <text x="220" y="260" text-anchor="middle" class="pipeline-group-text">Geometric</text>
+        <rect x="448" y="8" width="284" height="230" rx="8" class="pipeline-group" />
+        <text x="590" y="260" text-anchor="middle" class="pipeline-group-text">Numeric</text>
+        <!-- Boxes -->
+        <rect x="30" y="40" width="140" height="55" rx="6" class="pipeline-box" />
+        <text x="100" y="62" text-anchor="middle" class="pipeline-text">Geometric</text>
+        <text x="100" y="80" text-anchor="middle" class="pipeline-text">Modeling</text>
+        <rect x="250" y="40" width="140" height="55" rx="6" class="pipeline-box" />
+        <text x="320" y="62" text-anchor="middle" class="pipeline-text">Meshing</text>
+        <text x="320" y="80" text-anchor="middle" class="pipeline-text">Techniques</text>
+        <rect x="530" y="40" width="140" height="55" rx="6" class="pipeline-box" />
+        <text x="600" y="62" text-anchor="middle" class="pipeline-text">Numerical</text>
+        <text x="600" y="80" text-anchor="middle" class="pipeline-text">Simulation</text>
+        <rect x="120" y="155" width="140" height="55" rx="6" class="pipeline-box" />
+        <text x="190" y="187" text-anchor="middle" class="pipeline-text">Visualization</text>
+        <rect x="470" y="155" width="140" height="55" rx="6" class="pipeline-box" />
+        <text x="540" y="177" text-anchor="middle" class="pipeline-text">Error</text>
+        <text x="540" y="195" text-anchor="middle" class="pipeline-text">Analysis</text>
+        <!-- Arrows -->
+        <line x1="170" y1="67" x2="248" y2="67" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <line x1="390" y1="67" x2="528" y2="67" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <path d="M 600 95 L 600 120 L 540 120 L 540 153" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <line x1="470" y1="182" x2="262" y2="182" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <path d="M 490 155 L 490 120 L 340 120 L 340 97" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <path d="M 210 155 L 210 130 L 300 130 L 300 97" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+        <path d="M 120 175 L 50 175 L 50 97" class="pipeline-arrow" marker-end="url(#arrowhead)" />
+      </svg>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="projects">
+
+      <!-- 1. Cellular Learning -->
+      <div class="project-card bg-white border-cyan" id="proj-0">
+        <span class="project-category">Machine Learning</span>
+        <h3 class="project-title">Cellular Learning</h3>
+        <div class="project-content">
+          <div>
+            <p class="project-desc" id="proj-0-desc">I present a regression algorithm that provides a continuous, piecewise-smooth function approximating scattered data.</p>
+            <button class="read-more-btn" onclick="toggleProject(0, 'I present a regression algorithm that provides a continuous, piecewise-smooth function approximating scattered data. It is based on composing and blending linear functions over Voronoi cells, and it scales to high dimensions. The algorithm infers Voronoi cells from seed vertices and constructs a linear function for the input data in and around each cell. As the algorithm does not explicitly compute the Voronoi diagram, it avoids the curse of dimensionality.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-0-papers" style="display:none">
+          <p class="papers-label">Paper (1)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Cellular Learning: Scattered data regression in high dimensions via Voronoi cells</p>
+              <p class="paper-authors">Shankar P. Sastry</p>
+              <p class="paper-venue">Unsubmitted manuscript, 2025</p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2510.03810" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Geological Structures -->
+      <div class="project-card bg-gray border-emerald" id="proj-1">
+        <span class="project-category">Geometric Modeling</span>
+        <h3 class="project-title">Geological Structures</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/geological-structures.jpeg" alt="Geological structures with water-tight boundaries" /></div>
+          <div>
+            <p class="project-desc" id="proj-1-desc">The geometric modeling of geological structures finds applications in oil exploration.</p>
+            <button class="read-more-btn" onclick="toggleProject(1, 'The geometric modeling of geological structures finds applications in oil exploration. These structures consist of &quot;faults&quot; and &quot;horizons&quot; with water-tight geometric partitioning. We worked towards geometric modeling of the structures starting from input data with unorganized points obtained from images. Representing geometric surfaces (called &quot;tears&quot;) that are continuous in some parts of the domain and discontinuous in the other parts is the main challenge in this work. The visualization of the geological structures also poses significant challenges towards making the model interactive in real time. This has also led us to carry out research in visualization, graphics, and numerical linear algebra, looking at various techniques including hierarchical representation, preconditioners for linear solvers, and bounding-box techniques to render implicit surfaces efficiently.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-1-papers" style="display:none">
+          <p class="papers-label">Paper (1)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">A marching-tetrahedra algorithm for feature-preserving meshing of piecewise-smooth implicit surfaces</p>
+              <p class="paper-authors">B. Bagley, Shankar P. Sastry, and R. T. Whitaker</p>
+              <p class="paper-venue">Proc. of the 25th International Meshing Roundtable, pp. 162-174, 2016</p>
+              <div class="paper-links">
+                <a href="http://www.sciencedirect.com/science/article/pii/S1877705816333471" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Volumetric Data -->
+      <div class="project-card bg-white border-blue" id="proj-2">
+        <span class="project-category">Mesh Generation</span>
+        <h3 class="project-title">Volumetric Data</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/volumetric-data.png" alt="Mesh generated for a synthetic example" /></div>
+          <div>
+            <p class="project-desc" id="proj-2-desc">Patient-specific treatment is possible through processing of magnetic resonance (MR) or computed tomography (CT) images to obtain volumetric data containing the geometry of internal organs.</p>
+            <button class="read-more-btn" onclick="toggleProject(2, 'Patient-specific treatment is possible through processing of magnetic resonance (MR) or computed tomography (CT) images (registration, segmentation, etc.) to obtain volumetric data containing the geometry of internal organs. The challenges in this work included working with multi-material data and achieving size adaptivity. Our research enabled generation of provably high-quality meshes by construction of a nonconforming background mesh that is appropriately warped or &quot;cleaved&quot; to conform to the boundary. Another main contribution of the work includes the development of a variational system to place vertices in the regions of interest. Vertex density requirement was met by assuming a background positive charge density proportional to the input and running an n-body particle simulation in which the vertices were assumed to possess negative charge.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-2-papers" style="display:none">
+          <p class="papers-label">Paper (1)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Adaptive and unstructured mesh cleaving</p>
+              <p class="paper-authors">J. R. Bronson, Shankar P. Sastry, J. A. Levine, and R. T. Whitaker</p>
+              <p class="paper-venue">Proc. of the 23rd International Meshing Roundtable, pp. 266-278, 2014</p>
+              <div class="paper-links">
+                <a href="http://www.sciencedirect.com/science/article/pii/S1877705814016683" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Advancing-Front Delaunay -->
+      <div class="project-card bg-gray border-blue" id="proj-3">
+        <span class="project-category">Mesh Generation</span>
+        <h3 class="project-title">Advancing-Front Delaunay Mesh Refinement</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/delaunay-refinement.png" alt="Delaunay mesh refinement" /></div>
+          <div>
+            <p class="project-desc" id="proj-3-desc">Delaunay triangulation and refinement is a theoretically guaranteed technique of generating high-quality meshes.</p>
+            <button class="read-more-btn" onclick="toggleProject(3, 'Delaunay triangulation and refinement is a theoretically guaranteed technique of generating high-quality meshes. The technique produces meshes with triangular (or tetrahedral) elements with empty circumscribing circles (or spheres). The algorithm incrementally inserts vertices in a poor-quality triangle to recompute a new triangulation with better quality. I have developed a Delaunay refinement technique in which I place vertices on input segments first and then insert vertices in the domain in an advancing front manner. My algorithms work with input domains with small angles too. They produce graded meshes whose elements&apos; areas vary over the domain. The algorithms are significantly better than current state-of-the-art algorithms in terms of theoretical guarantees.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-3-papers" style="display:none">
+          <p class="papers-label">Papers (2)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">A 2D advancing-front delaunay mesh refinement algorithm</p>
+              <p class="paper-authors">Shankar P. Sastry</p>
+              <p class="paper-venue">Computational Geometry, vol. 97, 2021</p>
+              <div class="paper-links">
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0925772121000286" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+                <a href="https://arxiv.org/abs/1808.01539" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+              </div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A 3D advancing-front delaunay mesh refinement algorithm</p>
+              <p class="paper-authors">Shankar P. Sastry</p>
+              <p class="paper-venue">Computational Geometry, submitted, 2021</p>
+              <div class="paper-links">
+                <a href="https://arxiv.org/abs/2105.00656" target="_blank" rel="noopener noreferrer" class="paper-link">arXiv <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Curvilinear Meshing -->
+      <div class="project-card bg-white border-blue" id="proj-4">
+        <span class="project-category">Mesh Generation</span>
+        <h3 class="project-title">Curvilinear Meshing</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/curvilinear-meshing.png" alt="Air foil curvilinear mesh" /></div>
+          <div>
+            <p class="project-desc" id="proj-4-desc">Curvilinear meshes are obtained by first generating straight-sided meshes and mapping the boundary vertices to their respective locations on the curved boundaries.</p>
+            <button class="read-more-btn" onclick="toggleProject(4, 'Curvilinear meshes are obtained by first generating straight-sided meshes and mapping the boundary vertices to their respective locations on the curved boundaries. The interior vertices are subsequently interpolated to obtain a high-quality mesh. We use the RBF interpolation technique with the biharmonic kernel (thin plate splines) for this purpose. The main contribution of this work is the Taylor series-based reasoning why the RBF-based techniques with the biharmonic kernel have always yielded better-quality meshes when used for mesh morphing/warping/deformation.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-4-papers" style="display:none">
+          <p class="papers-label">Papers (2)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Thin-plate-spline curvilinear meshing on a calculus-of-variations framework</p>
+              <p class="paper-authors">Shankar P. Sastry, V. Zala, and R. M. Kirby</p>
+              <p class="paper-venue">Proc. of the 24th International Meshing Roundtable, pp. 135-147, 2015</p>
+              <div class="paper-links"><a href="http://www.sciencedirect.com/science/article/pii/S1877705815032294" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">Curvilinear mesh adaptation using radial basis function interpolation and smoothing</p>
+              <p class="paper-authors">V. Zala, V. Shankar, Shankar P. Sastry, and R. M. Kirby</p>
+              <p class="paper-venue">Journal of Scientific Computing, 77(1), 397-418, 2018</p>
+              <div class="paper-links"><a href="https://www.researchgate.net/publication/324435930_Curvilinear_Mesh_Adaptation_using_Radial_Basis_Function_Interpolation_and_Smoothing" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Interpolation Error Bounds -->
+      <div class="project-card bg-gray border-purple" id="proj-5">
+        <span class="project-category">Mesh Adaptation</span>
+        <h3 class="project-title">Numerical Analysis of Interpolation Error Bounds</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/interpolation-error.png" alt="Interpolation error over quadratic triangular element" /></div>
+          <div>
+            <p class="project-desc" id="proj-5-desc">The analysis of error in an FE simulation is an important step in validation and adaptation of our numerical experiments.</p>
+            <button class="read-more-btn" onclick="toggleProject(5, 'The analysis of error in an FE simulation is an important step in validation and adaptation of our numerical experiments. Errors may arise due to several causes such as the discretization of the domain and the equations and the interpolation of the solution within a mesh element. Assessment of interpolation error bounds also provides insight into quality of a mesh element. Prior work has mainly focused on analysis of interpolation error within a linear mesh element. We extended the work to include theoretical error bounds within high-order straight-sided elements, and subsequently extended the work to curved high-order elements as well. We were able to prove the results from the first principles using the Taylor series rather than the use of Bramble-Hilbert lemma. Our results can be applied in adaptive refinement and quality improvement of high-order meshes.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-5-papers" style="display:none">
+          <p class="papers-label">Papers (2)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Interpolation error bounds for curved, high-order finite elements and their implications to adaptive mesh refinement</p>
+              <p class="paper-authors">D. Moxey, Shankar P. Sastry, and R. M. Kirby</p>
+              <p class="paper-venue">Journal of Scientific Computing, 78(2), 1045-1062, 2019</p>
+              <div class="paper-links"><a href="https://dl.acm.org/doi/abs/10.1007/s10915-018-0795-6" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">On interpolation errors over quadratic nodal triangular finite elements</p>
+              <p class="paper-authors">Shankar P. Sastry and R. M. Kirby</p>
+              <p class="paper-venue">Proc. of the 22nd International Meshing Roundtable, pp. 349-366, 2013</p>
+              <div class="paper-links"><a href="http://link.springer.com/chapter/10.1007%2F978-3-319-02335-9_20" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Log-Barrier -->
+      <div class="project-card bg-white border-purple" id="proj-6">
+        <span class="project-category">Mesh Adaptation</span>
+        <h3 class="project-title">Log-Barrier Mesh Untangling &amp; Quality Improvement</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/log-barrier-untangling.png" alt="Mesh untangling" /></div>
+          <div>
+            <p class="project-desc" id="proj-6-desc">The presence of even a few poor-quality mesh elements can negatively affect the stability, accuracy, and efficiency of an FE solver.</p>
+            <button class="read-more-btn" onclick="toggleProject(6, 'The presence of even a few poor-quality mesh elements can negatively affect the stability, accuracy, and efficiency of an FE solver. Mesh quality improvement is carried out by vertex movement dictated by a numerical optimization algorithm. We developed an interior point method-based worst element mesh untangling and quality improvement algorithm. We improved the quality of the worst element in the mesh (which may be inverted) by reformulating a nonsmooth unconstrained optimization problem into a smooth constrained optimization problem and solving the resulting problem using a log-barrier method. We show that the algorithm satisfies the Karush-Kuhn-Tucker (KKT) conditions, a set of first-order necessary conditions, at the point of convergence. We also developed a parallel implementation of the algorithm for distributed-memory machines that uses a greedy edge-coloring scheme to enable parallel data transfer.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-6-papers" style="display:none">
+          <p class="papers-label">Papers (3)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">A log-barrier method for mesh quality improvement and untangling</p>
+              <p class="paper-authors">Shankar P. Sastry, S. M. Shontz, and S. A. Vavasis</p>
+              <p class="paper-venue">Engineering with Computers, vol. 30(3), pp. 315-329, 2014</p>
+              <div class="paper-links"><a href="http://link.springer.com/article/10.1007%2Fs00366-012-0294-6#page-1" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A parallel log-barrier method for mesh quality improvement and untangling</p>
+              <p class="paper-authors">Shankar P. Sastry and S. M. Shontz</p>
+              <p class="paper-venue">Engineering with Computers, vol. 30(4), pp. 503-515, 2014</p>
+              <div class="paper-links"><a href="http://link.springer.com/article/10.1007/s00366-014-0362-1" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A log-barrier method for mesh quality improvement</p>
+              <p class="paper-authors">Shankar P. Sastry, S. M. Shontz, and S. A. Vavasis</p>
+              <p class="paper-venue">Proc. of the 20th International Meshing Roundtable, pp. 329-346, 2011</p>
+              <div class="paper-links"><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-24734-7_18" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Local Mesh Quality -->
+      <div class="project-card bg-gray border-purple" id="proj-7">
+        <span class="project-category">Mesh Adaptation</span>
+        <h3 class="project-title">Local Mesh Quality Improvement</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/local-mesh-quality.png" alt="Three equal angles" /></div>
+          <div>
+            <p class="project-desc" id="proj-7-desc">In order to improve the quality of mesh elements, we move vertices in the mesh one by one such that the quality of the elements improves in the local vicinity.</p>
+            <button class="read-more-btn" onclick="toggleProject(7, 'In order to improve the quality of mesh elements, we move vertices in the mesh one by one such that the quality of the elements improves in the local vicinity. We answer the question of how to move vertices and which vertices to move first. We move vertices such that a vertex maximizes the minimum angle in the local star-shaped polygon. We choose vertices based on the inequality in the quality of the elements in the polygon and the direction of their gradients.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-7-papers" style="display:none">
+          <p class="papers-label">Papers (2)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Maximizing the minimum angle with the insertion of Steiner vertices</p>
+              <p class="paper-authors">Shankar P. Sastry</p>
+              <p class="paper-venue">Proc. of the 27th Canadian Conference on Computational Geometry, 2015</p>
+              <div class="paper-links"><a href="http://cccg.ca/proceedings/2015/11.pdf" target="_blank" rel="noopener noreferrer" class="paper-link">PDF <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A deviation-based dynamic vertex reordering technique for 2D mesh quality improvement</p>
+              <p class="paper-authors">J. Choi, H. Kim, Shankar P. Sastry, and J. Kim</p>
+              <p class="paper-venue">Symmetry, 11(7), 2019</p>
+              <div class="paper-links"><a href="https://www.mdpi.com/2073-8994/11/7/895" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Characterization -->
+      <div class="project-card bg-white border-purple" id="proj-8">
+        <span class="project-category">Mesh Adaptation</span>
+        <h3 class="project-title">Characterization of Mesh Quality Improvement Algorithms</h3>
+        <div class="project-content">
+          <div>
+            <p class="project-desc" id="proj-8-desc">We characterized some optimization techniques by analyzing their performance in several contexts such as inaccurate and accurate smoothing requirements and smoothing of graded, randomly-perturbed, and vertex-translated meshes.</p>
+            <button class="read-more-btn" onclick="toggleProject(8, 'We characterized some optimization techniques by analyzing their performance in several contexts such as inaccurate and accurate smoothing requirements and smoothing of graded, randomly-perturbed, and vertex-translated meshes. We also characterized the performance of linear solvers and preconditioners when the meshes were used to numerically solve isotropic, elliptic PDEs after the meshes were smoothed using various geometric quality metrics. The study resulted in context-specific assessment of performance of the mesh quality improvement techniques.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-8-papers" style="display:none">
+          <p class="papers-label">Papers (4)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Performance characterization of nonlinear optimization methods for mesh quality improvement</p>
+              <p class="paper-authors">Shankar P. Sastry and S. M. Shontz</p>
+              <p class="paper-venue">Engineering with Computers, vol. 28(3), pp. 269-286, 2012</p>
+              <div class="paper-links"><a href="http://link.springer.com/article/10.1007%2Fs00366-011-0227-9" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A comparison of gradient- and Hessian-based optimization methods for tetrahedral mesh quality improvement</p>
+              <p class="paper-authors">Shankar P. Sastry and S. M. Shontz</p>
+              <p class="paper-venue">Proc. of the 18th International Meshing Roundtable, pp. 631-648, 2009</p>
+              <div class="paper-links"><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-04319-2_36" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">A numerical investigation on the interplay among geometry, meshes, and linear algebra in the finite element solution of elliptic PDEs</p>
+              <p class="paper-authors">J. Kim, Shankar P. Sastry, and S. M. Shontz</p>
+              <p class="paper-venue">Engineering with Computers, vol. 28, pp. 431-450, 2012</p>
+              <div class="paper-links"><a href="http://link.springer.com/article/10.1007%2Fs00366-011-0231-0" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">Efficient solution of elliptic partial differential equations via effective combination of mesh quality metrics, preconditioners, and sparse linear solvers</p>
+              <p class="paper-authors">J. Kim, Shankar P. Sastry, and S. M. Shontz</p>
+              <p class="paper-venue">Proc. of the 19th International Meshing Roundtable, pp. 103-120, 2010</p>
+              <div class="paper-links"><a href="http://link.springer.com/chapter/10.1007%2F978-3-642-15414-0_7" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Cache Utilization -->
+      <div class="project-card bg-gray border-amber" id="proj-9">
+        <span class="project-category">High Performance Computing</span>
+        <h3 class="project-title">Cache Utilization</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/cache-utilization.png" alt="Hilbert space-filling curves" /></div>
+          <div>
+            <p class="project-desc" id="proj-9-desc">We worked on mesh element and vertex reordering techniques to improve the spatial locality of memory access patterns to improve cache utility in an implementation of a parallel algorithm that solves Laplace's equations in order to warp a mesh.</p>
+            <button class="read-more-btn" onclick="toggleProject(9, 'We worked on mesh element and vertex reordering techniques to improve the spatial locality of memory access patterns to improve cache utility in an implementation of a parallel algorithm that solves Laplace&apos;s equations in order to warp a mesh. We used graph theoretic (reverse Cuthill-McKee) and geometric (Hilbert space-filling curves) techniques to reorder mesh elements and vertices in single- and multi-core environments. The reordering of vertices and elements enables efficient partitioning of a mesh in a shared-memory processor for parallel processing in a multi-core environment. As a result of the data reordering, an improvement in cache utilization due to temporal locality was also observed for both stiffness matrix construction and the linear solver. Besides cache utilization, the performance of block Jacobi preconditioner also improved, i.e., fewer iterations were needed to converge to a solution, as a result of the reordering.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-9-papers" style="display:none">
+          <p class="papers-label">Paper (1)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">Mesh vertex- and element-reordering techniques for improved cache utilization in parallel mesh warping algorithms</p>
+              <p class="paper-authors">Shankar P. Sastry, E. U. Kultursay, S. M. Shontz, and M. T. Kandemir</p>
+              <p class="paper-venue">Engineering with Computers, vol. 30(4), pp. 535-547, 2014</p>
+              <div class="paper-links"><a href="http://link.springer.com/article/10.1007/s00366-014-0363-0" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. AMG Aggregation -->
+      <div class="project-card bg-white border-amber" id="proj-10">
+        <span class="project-category">High Performance Computing</span>
+        <h3 class="project-title">Aggregation for AMG Preconditioners</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/amg-aggregation.png" alt="AMG aggregates" /></div>
+          <div>
+            <p class="project-desc" id="proj-10-desc">Algebraic multigrid (AMG) preconditioners are used in solving sparse linear systems arising from finite element meshes.</p>
+            <button class="read-more-btn" onclick="toggleProject(10, 'Algebraic multigrid (AMG) preconditioners are used in solving sparse linear systems arising from finite element meshes. The aggregation of degrees of freedom (nodes) in an AMG preconditioner can be carried out in a &quot;top-down&quot; or a &quot;bottom-up&quot; fashion. In a &quot;top-down&quot; technique, the nodes are recursively partitioned until the desired number of aggregates are obtained. In a &quot;bottom-up&quot; technique, the desired number of partitions are first formed using a set of nodes acting as seeds, and all other nodes associate themselves with one of the seed nodes based on their geometric or topological proximity. The aggregates then iteratively reorganize themselves by moving the seeds to the &quot;center&quot; of their respective aggregates, and other nodes reassociate themselves to the nearest seed. In this study, we found that our GPU-based &quot;bottom-up&quot; technique yields aggregates that are topologically convex, which results in faster solution time over &quot;top-down&quot; techniques.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-10-papers" style="display:none">
+          <p class="papers-label">Paper (1)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">A GPU-based MIS aggregation strategy</p>
+              <p class="paper-authors">T. J. Lewis, Shankar P. Sastry, R. M. Kirby, and R. T. Whitaker</p>
+              <p class="paper-venue">Proc. of the 21st IEEE International Conference on High Performance Computing, pp. 214-223, 2015</p>
+              <div class="paper-links"><a href="http://ieeexplore.ieee.org/document/7397636/" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Patient-Specific Mesh -->
+      <div class="project-card bg-gray border-rose" id="proj-11">
+        <span class="project-category">Application in Medicine</span>
+        <h3 class="project-title">Patient-Specific Mesh Generation</h3>
+        <div class="project-content has-image">
+          <div class="project-image"><img src="img/patient-specific-mesh.png" alt="IVC filter mesh" /></div>
+          <div>
+            <p class="project-desc" id="proj-11-desc">We developed a patient-specific mesh generation technique with application to inferior vena cava (IVC) computational fluid dynamics (CFD) blood flow simulations.</p>
+            <button class="read-more-btn" onclick="toggleProject(11, 'We developed a patient-specific mesh generation technique with application to inferior vena cava (IVC) computational fluid dynamics (CFD) blood flow simulations. Pulmonary embolism (PE) is a potentially fatal disease in which blood clots travel from deep veins within the body and migrate to the lungs. When anti-coagulation therapy fails (or is infeasible), a mechanical filter is surgically implanted in the IVC in order to capture blood clots. Our technique generates patient-specific meshes of the IVC and the IVC filter to facilitate blood flow simulations, which provides surgical guidance to place the filter at a desirable location. This technique can also be used to model blood flow when stents are used to dilate blood vessels. Our technique involves segmentation of patient computed tomography (CT) images and virtual placement of a geometric model of an IVC filter mesh created by a computer-aided design (CAD) software package. The image segmentation extracts a model of the IVC and its adjacent veins, and a surface mesh of the IVC is generated using the marching cubes algorithm. The IVC filter mesh is virtually placed in the IVC surface mesh by modeling the superelastic properties of IVC filter and the approximated linear elastic properties of the IVC. A volume mesh is generated using the advancing front technique.')">
+              Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="papers-section" id="proj-11-papers" style="display:none">
+          <p class="papers-label">Papers (2)</p>
+          <div class="papers-list">
+            <div class="paper-item">
+              <p class="paper-title">A computational method for predicting inferior vena cava filter performance on a patient-specific basis</p>
+              <p class="paper-authors">K. I. Aycock, R. L. Campbell, K. B. Manning, Shankar P. Sastry, S. M. Shontz, F. C. Lynch, and B. A. Craven</p>
+              <p class="paper-venue">Journal of Biomechanical Engineering, vol. 136(8), 2014</p>
+              <div class="paper-links"><a href="http://biomechanical.asmedigitalcollection.asme.org/article.aspx?articleid=1870705" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+            <div class="paper-item">
+              <p class="paper-title">Patient-specific model generation and simulation for pre-operative surgical guidance for pulmonary embolism treatment</p>
+              <p class="paper-authors">Shankar P. Sastry, J. Kim, S. M. Shontz, B. A. Craven, F. C. Lynch, K. B. Manning, and T. Panitanarak</p>
+              <p class="paper-venue">Image-Based Modeling and Mesh Generation, vol. 3, pp. 223-249, 2013</p>
+              <div class="paper-links"><a href="http://link.springer.com/chapter/10.1007%2F978-94-007-4255-0_12" target="_blank" rel="noopener noreferrer" class="paper-link">Link <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects -->
+
+    <!-- Scholar links -->
+    <div class="scholar-links">
+      <p>Full publication list with citation counts available on:</p>
+      <div class="scholar-btns">
+        <a href="http://scholar.google.com/citations?user=Ug8mveQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="scholar-btn primary">
+          Google Scholar
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10h10M10 5l5 5-5 5"/></svg>
+        </a>
+        <a href="https://www.researchgate.net/profile/Shankar_Sastry3" target="_blank" rel="noopener noreferrer" class="scholar-btn secondary">
+          ResearchGate
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10h10M10 5l5 5-5 5"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== ABOUT / TIMELINE ==================== -->
+<section id="about" class="about">
+  <div class="about-inner">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Experience &amp; Education</h2>
+    <p style="text-align:center; color:#737373; font-style:italic; margin-bottom:32px; font-size:15px;">From IIT Madras to Meta</p>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-items">
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-blue"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Software Engineer</span>
+              <span class="timeline-company">Meta</span>
+              <span class="timeline-period">2025-Present</span>
+              <span class="timeline-current">Current</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-red"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Software Engineer</span>
+              <span class="timeline-company">Google</span>
+              <span class="timeline-period">2020-25</span>
+            </div>
+            <p class="timeline-desc">Privacy infrastructure.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-blue2"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Software Engineer</span>
+              <span class="timeline-company">C3.ai</span>
+              <span class="timeline-period">2018-20</span>
+            </div>
+            <p class="timeline-desc">AI and machine learning platform for enterprises.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-sky"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Software Engineer</span>
+              <span class="timeline-company">Intel Corporation</span>
+              <span class="timeline-period">2016-18</span>
+            </div>
+            <p class="timeline-desc">Technology and manufacturing group at Hillsboro, OR.</p>
+            <p class="timeline-details">Worked on generating hexahedral meshes for thermomechanical simulations.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-amber"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Postdoctoral Researcher</span>
+              <span class="timeline-company">University of Utah</span>
+              <span class="timeline-period">2012-16</span>
+            </div>
+            <p class="timeline-desc">Scientific Computing and Imaging (SCI) Institute.</p>
+            <p class="timeline-details">Supervised by Prof. Ross T. Whitaker and Prof. Robert M. Kirby. Worked on mesh generation and interpolation error analysis in high-order finite elements. Collaborated with ExxonMobil Upstream Research Company on geometric modeling of geological structures.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-indigo"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">Ph.D. in Computer Science and Engineering</span>
+              <span class="timeline-company">Penn State University</span>
+              <span class="timeline-period">2007-12</span>
+            </div>
+            <p class="timeline-desc">Department of Computer Science and Engineering.</p>
+            <p class="timeline-details">Advisor: Prof. Suzanne M. Shontz. Research focused on dynamic meshing techniques with application to simulation of blood flow after vein occlusion by mechanical filters for capturing blood clots. Collaborated with Penn State Hershey Medical Center. Also worked on numerical optimization techniques for mesh quality improvement.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot dot-emerald"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-role">B.Tech in Mechanical Engineering</span>
+              <span class="timeline-company">IIT Madras</span>
+              <span class="timeline-period">2003-07</span>
+            </div>
+            <p class="timeline-desc">Indian Institute of Technology Madras, Chennai, India.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer id="contact" class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">
+          <span class="bar"></span>
+          <span class="name">Shankar P. Sastry</span>
+        </div>
+        <p class="footer-brand-desc">Software Engineer at Meta. PhD in Computer Science and Engineering. Research in computational geometry and high-performance scientific computing.</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#research">Research &amp; Publications</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <ul>
+          <li>[firstname].prasad[at]gmail</li>
+          <li><a href="http://scholar.google.com/citations?user=Ug8mveQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a></li>
+          <li><a href="http://www.linkedin.com/in/shankarsastry" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+          <li><a href="https://www.researchgate.net/profile/Shankar_Sastry3" target="_blank" rel="noopener noreferrer">ResearchGate ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Shankar Prasad Sastry. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15V5M5 10l5-5 5 5"/></svg>
+</button>
+
+<script>
+// Back to top visibility
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('backToTop');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+}, {passive: true});
+
+// Toggle project expand/collapse
+function toggleProject(index, fullText) {
+  var desc = document.getElementById('proj-' + index + '-desc');
+  var papers = document.getElementById('proj-' + index + '-papers');
+  var btn = desc.parentElement.querySelector('.read-more-btn');
+  var firstSentence = fullText.split('. ')[0] + '.';
+
+  if (btn.classList.contains('expanded')) {
+    // Collapse
+    desc.textContent = firstSentence;
+    btn.classList.remove('expanded');
+    btn.innerHTML = 'Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>';
+    if (papers) papers.style.display = 'none';
+  } else {
+    // Expand
+    desc.textContent = fullText;
+    btn.classList.add('expanded');
+    btn.innerHTML = 'Show less <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>';
+    if (papers) papers.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
+
